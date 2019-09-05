@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const path = require("path");
 const fs=require("fs");
-router.get("getEnvironment/:process",function(req,res){
+
+
+router.get("/getEnvironment/:process",function(req,res){
+    console.log("welcome");
     if(req.params.process == "P1" || req.params.process == "P2"){
         const filePath = path.join(__dirname, req.params.process+"/.env");
               
@@ -10,7 +13,7 @@ router.get("getEnvironment/:process",function(req,res){
         let  result ={};
         readerStream.on('data', function(chunk) {
             console.log(chunk);
-            let chunkArray = chunk.toString().split("\r\n");
+            let chunkArray = chunk.toString().split("\n");
             for(let i=0;i<chunkArray.length;i++)
             {
                 let splitArray = chunkArray[i].toString().split("=") ;
@@ -58,6 +61,7 @@ router.post("/setEnvironment/:process/:key/:value",function(req,res){
             let wstream = fs.createWriteStream(filePath);
             for(let key in result){
                 wstream.write(key+" "+"="+" "+result[key]+"\n");
+                
                                 
             }
             wstream.end();

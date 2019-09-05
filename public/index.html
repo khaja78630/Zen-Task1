@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+    <body>
+       
+        <label for="process">Enter Process Name</label>
+        <input type="text" id="process" required></input><br/>
+        <button type="button" onClick="getEnvironmentVariables()">GetEnvironment</button>
+        
+        <p id="result"></p>
+
+        <hr/>
+
+        <label for="process1">Enter Process Name</label>
+        <input type="text" id="process1" required></input><br/>
+        <label for="key">Enter Key Name</label>
+        <input type="text" id="key" required></input><br/>
+        <label for="value">Enter Value</label>
+        <input type="text" id="value" required></input><br/>
+        <button type="button" onClick="setEnvironmentVariables(event)">SetEnvironment</button>
+        
+        <p id="result1"></p>
+
+
+
+    </body>
+    <script>
+    function setEnvironmentVariables(e){
+        
+        
+        $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/setEnvironment/"+document.getElementById('process1').value+"/"+document.getElementById('key').value+"/"+document.getElementById('value').value,
+        
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(msg) {
+            $(result1).html("result :"+JSON.stringify(msg));
+           
+        },
+        error: function(e){
+            $(result1).html("Unavailable");
+        }
+    });
+    }
+
+    function getEnvironmentVariables(){
+       
+        $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/getEnvironment/"+document.getElementById('process').value,
+        
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(msg) {
+            $(result).html("result :"+JSON.stringify(msg));
+           
+        },
+        error: function(e){
+            $(result).html("Unavailable");
+        }
+        });
+    }
+
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+   </html>
