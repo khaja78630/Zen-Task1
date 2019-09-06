@@ -3,21 +3,70 @@
 
     <body>
        
-        <label for="process">Enter Process Name</label>
-        <input type="text" id="process" required></input><br/>
-        <button type="button" onClick="getEnvironmentVariables()">GetEnvironment</button>
+        <table>
+            <tr>
+                    <th>
+                        <label for="process">Enter Process Name</label>
+                    </th>
+                    <td>
+                            <input type="text" id="process" required></input>
+                    </td>
+                </tr>
+
+            <tr>
+                    <td colspan =2>
+                            <button type="button" onClick="getEnvironmentVariables()">GetEnvironment</button>
+                    </td>
+            </tr>
+           
+           
+        </table>
         
+       
         <p id="result"></p>
+        
+        
 
         <hr/>
 
-        <label for="process1">Enter Process Name</label>
-        <input type="text" id="process1" required></input><br/>
-        <label for="key">Enter Key Name</label>
-        <input type="text" id="key" required></input><br/>
-        <label for="value">Enter Value</label>
-        <input type="text" id="value" required></input><br/>
-        <button type="button" onClick="setEnvironmentVariables(event)">SetEnvironment</button>
+
+        <table>
+            <tr>
+                    <th>
+                            <label for="process1">Enter Process Name</label>
+                    </th>
+                    <td>
+                            <input type="text" id="process1" required></input>
+                    </td>
+
+            </tr>
+            <tr>
+                    <th>
+                            <label for="key">Enter Key Name</label>
+                    </th>
+                    <td>
+                            <input type="text" id="key" required></input>
+                    </td>
+
+            </tr>
+            <tr>
+                    <th>
+                            <label for="value">Enter Value</label>
+                    </th>
+                    <td>
+                            <input type="text" id="value" required></input>
+                    </td>
+
+            </tr>
+            <tr>
+                    <td>
+                            <button type="button" onClick="setEnvironmentVariables(event)">SetEnvironment</button>
+                    </td>
+            </tr>
+           
+            
+        </table>
+        
         
         <p id="result1"></p>
 
